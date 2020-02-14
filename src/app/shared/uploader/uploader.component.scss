@@ -1,0 +1,47 @@
+// styling for uploader component
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 240px;
+}
+
+input {
+  padding-bottom: 10px;
+}
+
+.actions > button {
+  margin: 5px;
+}
+
+form {
+  display: grid;
+}
+
+.imgPrev {
+  max-width: 200px;
+  max-height: 100px;
+}
+
+
+@media (min-width: 360px) and (max-width: 414px) {
+  .wrapper {
+    max-width: 310px;
+  }
+}
+
+@media (min-width: 415px) and (max-width: 703px) {
+  .wrapper {
+    max-width: 365px;
+  }
+}
+
+@media (min-width: 704px) {
+  .wrapper {
+    max-width: 500px;
+  }
+  .row-responsive {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

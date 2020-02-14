@@ -1,0 +1,57 @@
+.content {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.topics {
+  padding: 10px 0;
+  margin: inherit;
+}
+
+.mat-card {
+  max-width: 400px;
+  margin: inherit;
+  margin-bottom: 30px;
+}
+
+.mat-card a,
+div {
+  width: inherit;
+}
+
+.mat-card a div {
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+  height: 250px;
+}
+
+@media (min-width: 599px) {
+  .mat-card {
+    margin: 0;
+  }
+
+  .mat-card a div {
+    height: 300px;
+  }
+
+  .topics {
+    display: grid;
+    gap: 1em;
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+@media (min-width: 1024px) {
+  .topics {
+    max-width: 90%;
+  }
+}
+@media (min-width: 1400px) {
+  .topics {
+    max-width: 70%;
+  }
+}

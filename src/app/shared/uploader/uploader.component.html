@@ -1,0 +1,20 @@
+<div class="wrapper">
+<p>{{title}}</p>
+  <div>
+    <form [formGroup]="uploadForm">
+      <input *ngIf="!submited && !imagePath" type="file" formControlName="fileInput" (change)="onFileSelect($event)" />
+      <img *ngIf="uploadedFile || imagePath" #imgFile class="imgPrev" [src]="getImgSrc()" />
+      <mat-progress-bar *ngIf="progressBar && !submited" [bufferValue]="progress" color="accent" mode="buffer">
+      </mat-progress-bar>
+      <ul>
+        <li *ngIf="uploadedFile">
+          {{uploadedFile.name.length <= 10 ? uploadedFile.name :
+           '...'+uploadedFile.name.substring(uploadedFile.name.length - 20) }} - {{uploadedFile.size}} bytes</li>
+      </ul>
+      <div class="actions">
+        <button *ngIf="!submited" [disabled]="uploadedFile == null" (click)="onSubmit()" mat-raised-button type="submit">Upload</button>
+        <button *ngIf="imagePath" [disabled]="!imagePath" (click)="deleteImg()" mat-raised-button color="warn">Delete</button>
+      </div>
+    </form>
+  </div>
+</div>

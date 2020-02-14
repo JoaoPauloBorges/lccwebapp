@@ -1,0 +1,72 @@
+<section class="formSubmission">
+
+  <h4>Paper {{title}}</h4>
+
+  <form [formGroup]="paperForm" (ngSubmit)="onSubmit()" class="gridTable row-1 forms">
+
+    <!-- topicId (select One) -->
+    <mat-form-field>
+      <mat-label>Research topic</mat-label>
+      <mat-select formControlName="topicId">
+        <mat-option *ngFor="let topic of topics" [value]="topic._id">
+          {{topic.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- researchersId (select Many) -->
+    <mat-form-field>
+      <mat-label>Researchers</mat-label>
+      <mat-select formControlName="researchers" multiple>
+        <mat-select-trigger>
+          {{this.getSelecionado()}}
+          <span *ngIf="this.paperForm.get('researchers').value?.length > 1" class="additional-selection">
+            (+{{this.paperForm.get('researchers').value.length - 1}}
+            {{this.paperForm.get('researchers').value?.length === 2 ? 'other' : 'others'}})
+          </span>
+
+        </mat-select-trigger>
+        <mat-option *ngFor="let researcher of researcherList" [value]="researcher._id">{{researcher.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- title -->
+    <mat-form-field>
+      <mat-label>Paper title</mat-label>
+      <input matInput formControlName="title" maxlength="100"
+        placeholder="YOUR PAPER TITLE USING PLAIN TEXT AND NO NEED TO FORMATTING">
+      <mat-error *ngIf="paperForm.get('title').errors?.required">
+        Title is required!
+      </mat-error>
+    </mat-form-field>
+
+    <!-- paperDate -->
+    <mat-form-field>
+      <mat-label>Paper date</mat-label>
+      <input matInput readonly formControlName="paperDate" [matDatepicker]="picker" placeholder="Choose a date">
+      <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- abstract -->
+    <mat-form-field>
+      <textarea #abstract matInput formControlName="abstract" maxlenght="1500" placeholder="Abstract"></textarea>
+      <mat-hint align="end">{{abstract.value.length}} / 1500 </mat-hint>
+    </mat-form-field>
+
+    <!-- references -->
+    <mat-form-field>
+      <textarea #references matInput formControlName="references" maxlenght="500" placeholder="References"></textarea>
+      <mat-hint align="end">{{references.value.length}} / 500 </mat-hint>
+    </mat-form-field>
+
+    <!-- imgPath -->
+    <app-uploader [imagePath]="getImgSrc()" title="Optional image for post" (bodyResponse)="paperImgListener($event)"></app-uploader>
+    <input type="hidden" formControlName=imagePath />
+
+    <!-- submit -->
+    <button mat-raised-button color="accent" [disabled]='paperForm.invalid' type="submit"
+      class="btn btn-warning">Submit</button>
+  </form>
+</section>

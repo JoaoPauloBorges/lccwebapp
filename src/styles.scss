@@ -1,0 +1,103 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.gridTable {
+  display: grid;
+}
+
+.row-responsive {
+  @extend .gridTable;
+  grid-template-columns: 1fr;
+}
+.row-1 {
+  @extend .gridTable;
+  grid-template-columns: 1fr;
+}
+
+// FORMS
+.forms {
+  padding: 1em;
+}
+
+.forms button {
+  margin-top: 2em;
+}
+.formSubmission {
+  max-width: 290px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 10px 0 rgba(67, 75, 2, 0.7);
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+.formSubmission h4 {
+  padding-top: 2em;
+  text-align: center;
+}
+
+@media (min-width: 360px) and (max-width: 414px) {
+  .formSubmission {
+    max-width: 330px;
+  }
+}
+
+@media (min-width: 415px) and (max-width: 703px) {
+  .formSubmission {
+    max-width: 400px;
+  }
+}
+
+@media (min-width: 704px) {
+  .formSubmission {
+    max-width: 650px;
+    box-shadow: none;
+    h4 {
+      margin-top: 15px;
+    }
+  }
+  .row-responsive {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// large display
+@media (min-width: 920px) {
+  .gridTable {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+  }
+
+  app-uploader {
+    grid-column: 1/3 !important;
+    margin-right: auto;
+  }
+
+  .formSubmission {
+    max-width: 90%;
+  }
+
+  .gridTable > button {
+    grid-column: 1/3;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 250px;
+    min-height: 50px;
+  }
+}
+
+// 600 / 706 h
+/*
+Phone 5S is an example of a Breakpoint 1 with 320px
+iPhone 6+ is an example of a Breakpoint 2 with 414px
+iPad Mini is an example of a Breakpoint 3 with 703px
+iPad Air is an example of a Breakpoint 4 with 768px
+*/

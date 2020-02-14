@@ -1,0 +1,27 @@
+<section class="formSubmission">
+
+  <h4>{{page + ' ' + formType}}</h4>
+
+  <form [formGroup]="carrouselForm" class="gridTable forms">
+    <!-- imgPaths -->
+    <ul>
+      <li *ngFor="let img of carrousel.imagePath; let i = index;">
+        <!-- invertImage -->
+        <mat-checkbox *ngIf="uniqueImg" color="primary" formControlName="invertColor">Negative color?</mat-checkbox>
+
+        <app-uploader [imagePath]="img" title="{{msg ? msg : 'Carrousel\'s Image ' + (i+1)}}"
+          (bodyResponse)="imgListener($event, i)"></app-uploader>
+        <input type="hidden" formControlName="imagePath{{i}}" />
+      </li>
+    </ul>
+
+    <button *ngIf="!uniqueImg" class="addBtn" mat-raised-button (click)="addImg()">+</button>
+
+    <!-- Page -->
+    <input type="hidden" formControlName=page />
+
+    <!-- submit -->
+    <button mat-raised-button color="accent" [disabled]="carrouselForm.invalid" (click)="onSubmit()" type="submit"
+      class="btn btn-warning">Submit</button>
+  </form>
+</section>

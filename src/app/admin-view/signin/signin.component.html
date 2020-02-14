@@ -1,0 +1,31 @@
+<section class="container">
+  <section class="content">
+    <h2> Login</h2>
+
+    <form [formGroup]="loginForm" (submit)="login()">
+
+      <mat-form-field>
+        <input #emailInput matInput placeholder="Email" formControlName="email"
+        (cdkAutofill)="emailAutofilled($event.isAutofilled)" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="loginForm.get('email').errors?.email">
+          Invalid e-mail!
+        </mat-error>
+        <mat-error *ngIf="loginForm.get('email').errors?.required">
+          E-mail is required!
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'"
+        (cdkAutofill)="passwordAutofilled($event.isAutofilled)" placeholder="Password">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="!!loginForm.get('password').errors?.required">
+          Password is required!
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button [disabled]='loginForm.invalid' type="submit" color="accent">Login</button>
+    </form>
+    <button mat-raised-button routerLink=""> Cancelar </button>
+  </section>
+</section>

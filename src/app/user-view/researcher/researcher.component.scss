@@ -1,0 +1,110 @@
+.container {
+  display: block;
+  min-height: calc(100vh - 56px);
+  background-color: rgb(35, 35, 35);
+  color: white;
+}
+
+@media (min-width: 651px) {
+  .container {
+    min-height: calc(100vh - 64px);
+  }
+}
+
+.content {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.header {
+  padding-top: 5%;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  padding-bottom: 10%;
+}
+
+h2 {
+  padding: 10px 15px;
+  padding-top: 0px;
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+}
+
+.header p {
+  margin: 0;
+  color: rgb(150, 150, 150);
+  padding-left: 15px;
+  font-size: 15px;
+  text-transform: capitalize;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  h4 {
+    padding-top: 10px;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+  }
+}
+
+.body p {
+  font-size: 12px;
+  color: rgb(150, 150, 150);
+  letter-spacing: 0.2em;
+}
+
+.mat-divider {
+  border-top-color: rgba(255, 255, 0, 0.692);
+  border-top-style: dashed;
+}
+
+.about {
+  margin-bottom: 10px;
+}
+
+.about > h4 {
+  margin: 0;
+}
+
+$card-header-size: 80px !default;
+.card-avatar {
+  height: $card-header-size;
+  width: $card-header-size;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+@media (min-width: 700px) {
+  $card-header-size: 140px;
+  .card-avatar {
+    height: $card-header-size;
+    width: $card-header-size;
+  }
+
+.header {
+  grid-template-columns: 0.5fr 3fr;
+  align-items: center;
+  grid-gap: 1em;
+}
+
+p  a {
+  text-decoration: none !important;
+  color: rgb(150, 150, 150) !important;
+}
+
+p a:hover {
+  color:yellow !important;
+}
+
+.header h2 {
+  font-size: 40px;
+}
+.header  p {
+font-size: 25px;
+}
+
+}

@@ -1,0 +1,32 @@
+<section class="formSubmission">
+
+  <h4>Topic {{title}}</h4>
+
+  <form [formGroup]="topicForm" (ngSubmit)="onSubmit()" class="gridTable row-1 forms">
+
+    <!-- name -->
+    <mat-form-field>
+      <mat-label>Topic name</mat-label>
+      <input matInput formControlName="name" maxlength="100">
+      <mat-error *ngIf="topicForm.get('name').errors?.required">
+        Topic name is required!
+      </mat-error>
+    </mat-form-field>
+
+    <!-- date -->
+    <mat-form-field>
+      <mat-label>Date</mat-label>
+      <input #inp matInput readonly formControlName="date" [matDatepicker]="picker" placeholder="Choose a date">
+      <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- imgPath -->
+    <app-uploader [imagePath]="getImgSrc()" title="Upload an image for the topic" (bodyResponse)="imgListener($event)"></app-uploader>
+    <input type="hidden" formControlName=imagePath />
+
+    <!-- submit -->
+    <button mat-raised-button color="accent" [disabled]='topicForm.invalid' type="submit"
+      class="btn btn-warning">Submit</button>
+  </form>
+</section>

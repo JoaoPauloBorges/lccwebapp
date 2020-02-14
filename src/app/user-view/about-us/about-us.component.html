@@ -1,0 +1,24 @@
+<div class="container">
+  <p class='quote'>Um pouco sobre nossa equipe</p>
+  <section>
+    <app-carousel page="about-us"></app-carousel>
+  </section>
+  <section class="content">
+    <h2>Pesquisadores</h2>
+    <div class="researchers">
+      <mat-card *ngFor="let researcher of researchers" [routerLink]="['/researchers/', researcher._id]">
+        <mat-card-header>
+          <div mat-card-avatar [ngStyle]="{'background-image':'url('+url+researcher.imagePath+')'}"
+            class="header-image">
+          </div>
+          <mat-card-title>{{researcher.name}}</mat-card-title>
+          <mat-card-subtitle>{{researcher.headline}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{researcher.about | limitChar }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+  <app-footer></app-footer>
+</div>

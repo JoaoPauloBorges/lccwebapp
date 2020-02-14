@@ -1,0 +1,53 @@
+.container {
+  background-color: whitesmoke;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.content {
+  max-width: 90%;
+  margin: 0 auto;
+  margin-top: 8%;
+  text-align: center;
+}
+
+.content > button {
+  margin-top: 50%;
+  width: 40%;
+}
+
+h2 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+form {
+  align-content: center;
+}
+
+form > button {
+  margin-top: 20%;
+  width: 100%;
+}
+
+form > * {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .content {
+    max-width: 500px;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px whitesmoke inset !important;
+    box-shadow: 0 0 0 30px whitesmoke inset !important;
+}

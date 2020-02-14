@@ -1,0 +1,56 @@
+<!-- Toolbar for desktop -->
+<mat-toolbar color="accent" *ngIf="!(isHandset$ | async)">
+  <button mat-icon-button aria-label="Toggle sidenav" onclick="this.blur()" (click)="drawer.toggle()">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+  <button mat-button routerLink="/home" class="navbar-brand">
+    <img class="brand-nav" src="{{logoPath | async}}" alt="LCC">
+  </button>
+  <span class="fill-remaining-space"></span>
+  <span class="welcome">Welcome {{user?.name}}</span>
+</mat-toolbar>
+
+<mat-sidenav-container color="accent" class="sidenav-container">
+  <!-- Sidenav -->
+  <mat-sidenav #drawer class="sidenav" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
+    <!-- sidenav toolbar -->
+    <mat-toolbar color="{{(isHandset$ | async) ? 'accent' : ''}}">Menu</mat-toolbar>
+
+    <!-- Ao selecionar uma opção, fecha a sidenav qnd está em mobile mode -->
+    <mat-nav-list (click)="drawer.mode === 'over' && drawer.toggle()">
+      <a mat-list-item routerLink='/admin'>Home</a>
+      <a mat-list-item routerLink='researcher-list'>Researchers list</a>
+      <a mat-list-item routerLink='paper-list'>Paper list</a>
+      <a mat-list-item routerLink='topic-list'>Topic list</a>
+      <a mat-list-item routerLink='post-list'>Post list</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink='post'>Post Registration</a>
+      <a mat-list-item routerLink='topic'>Topic Registration</a>
+      <a mat-list-item routerLink='researcher'>Researcher Registration</a>
+      <a mat-list-item routerLink='paper'>Paper Registration</a>
+      <a mat-list-item class="logoutBtn" (click)="logout()">
+        <p>Logout</p>
+        <mat-icon>exit_to_app</mat-icon>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <!-- Toolbar for mobile-->
+    <mat-toolbar color="accent" *ngIf="isHandset$ | async">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button onclick="this.blur()" (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <button mat-button routerLink="/home" class="navbar-brand">
+        <img class="brand-nav" src="{{logoPath | async}}" alt="LCC">
+      </button>
+      <span class="fill-remaining-space"></span>
+      <span class="welcome">{{user?.name}}</span>
+    </mat-toolbar>
+
+    <!-- Add Content Here -->
+    <ng-content></ng-content>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

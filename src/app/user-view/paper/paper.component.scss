@@ -1,0 +1,107 @@
+.researches-section {
+  max-width: 100%;
+  background-color: rgb(248, 247, 247);
+}
+
+.image {
+  margin-bottom: 10px;
+  height: 150px;
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-bottom: 3px dashed yellow;
+}
+
+.avatar {
+  margin: 5px;
+  margin-bottom: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px dashed black;
+}
+
+.research-card {
+  display: grid;
+  .card-content {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    .name {
+      line-height: 1.35em;
+      text-align: center;
+      letter-spacing: normal;
+      font: normal normal normal 20px/1.35em raleway, sans-serif;
+    }
+
+    .date {
+      text-align: center;
+      color: gray;
+      font-size: large;
+      padding-top: 2%;
+      padding-bottom: 2%;
+    }
+
+    .abstract {
+      text-align: justify;
+      padding-top: 2%;
+    }
+
+    .references {
+      text-align: center;
+      text-shadow: gray;
+      font-style: italic;
+      padding: 5%;
+    }
+
+    .researchers {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .researches-section {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  //left <-> right
+  .research-card:nth-child(even) > .card-content {
+    grid-column-start: 1;
+  }
+  .research-card:nth-child(even) > img {
+    grid-column-start: 2;
+    grid-row-start: 1;
+  }
+
+  .research-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 50px 10px;
+
+    .image {
+      height: 50%;
+      width: 100%;
+    }
+
+    .card-content {
+      .name {
+        font: normal normal normal 40px/1.35em raleway, sans-serif;
+      }
+    }
+  }
+}
+
+@media (min-width: 1025px) {
+  .research-card {
+    .image {
+      height: 70%;
+      width: 75%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

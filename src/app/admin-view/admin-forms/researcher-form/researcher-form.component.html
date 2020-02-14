@@ -1,0 +1,67 @@
+<section class="formSubmission">
+
+<h4>Researcher {{title}}</h4>
+
+  <form [formGroup]="researcherForm" (ngSubmit)="onSubmit()"  class="gridTable row-1 forms">
+    <!-- name -->
+    <mat-form-field>
+      <input matInput formControlName="name" maxlength="50" placeholder="Researcher name">
+      <mat-error *ngIf="researcherForm.get('name').errors?.required">
+        Name is required!
+      </mat-error>
+    </mat-form-field>
+    <!-- email -->
+    <mat-form-field>
+      <input matInput placeholder="Email" formControlName="email" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="researcherForm.get('email').errors?.email">
+        Invalid e-mail!
+      </mat-error>
+      <mat-error *ngIf="researcherForm.get('email').errors?.required">
+        E-mail is required!
+      </mat-error>
+    </mat-form-field>
+    <!-- headline -->
+    <mat-form-field>
+      <input matInput formControlName="headline" placeholder="Headline">
+      <mat-error *ngIf="researcherForm.get('headline').errors?.required">
+        headline is required
+      </mat-error>
+    </mat-form-field>
+    <!-- lattesUrl -->
+    <mat-form-field>
+      <mat-label>Url for your lattes cv</mat-label>
+      <input matInput formControlName="lattesUrl" placeholder=" http://lattes.cnpq.br/999999999...">
+    </mat-form-field>
+    <!-- about -->
+    <mat-form-field>
+      <textarea #about matInput formControlName="about" maxlenght="240" placeholder="Tell about you"></textarea>
+      <mat-hint align="end">{{about.value.length}} / 240 </mat-hint>
+    </mat-form-field>
+    <div class="row-responsive">
+      <!-- abbreviation -->
+      <mat-form-field>
+        <input matInput formControlName="abbreviation" placeholder="Abbreviation">
+        <mat-error *ngIf="researcherForm.get('abbreviation').errors?.required">
+          Abbreviation is required!
+        </mat-error>
+      </mat-form-field>
+      <!-- phone-number -->
+      <mat-form-field>
+
+        <mat-label>
+          <mat-icon>phone</mat-icon> Phone Number
+        </mat-label>
+        <input matInput formControlName="phoneNumber" placeholder="(99) 9 9999 9999 ">
+        <mat-error *ngIf="researcherForm.get('abbreviation').errors?.required">
+          Phone number is required!
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <!-- imgPath -->
+    <app-uploader [imagePath]="getImgSrc()" title="Upload your image profile" (bodyResponse)="profileImgListener($event)"></app-uploader>
+    <input type="hidden"  formControlName=imagePath />
+    <!-- submit -->
+    <button mat-raised-button color="accent" [disabled]='researcherForm.invalid' type="submit"
+      class="btn btn-warning">Submit</button>
+  </form>
+</section>

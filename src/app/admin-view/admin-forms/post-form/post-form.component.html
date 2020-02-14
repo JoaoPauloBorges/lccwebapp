@@ -1,0 +1,48 @@
+<section class="formSubmission">
+
+  <h4>Post {{formTitle}}</h4>
+
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="gridTable row-1 forms">
+
+    <!-- Author -->
+    <mat-form-field>
+      <mat-label>Post Author</mat-label>
+      <input matInput #author formControlName="author" maxlength="100">
+      <mat-hint align="end">{{author.value.length}} / 100 </mat-hint>
+    </mat-form-field>
+
+    <!-- Title -->
+    <mat-form-field>
+      <mat-label>Post Title</mat-label>
+      <input matInput #title formControlName="title" maxlength="100">
+      <mat-hint align="end">{{title.value.length}} / 100 </mat-hint>
+      <mat-error *ngIf="postForm.get('title').errors?.required">
+        Title is required!
+      </mat-error>
+    </mat-form-field>
+
+    <!-- date -->
+    <mat-form-field>
+      <mat-label>Date</mat-label>
+      <input matInput readonly formControlName="date" [matDatepicker]="picker" placeholder="Choose a date">
+      <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput formControlName="content" placeholder="Your post here"></textarea>
+      <mat-error *ngIf="postForm.get('content').errors?.required">
+        Content is required!
+      </mat-error>
+    </mat-form-field>
+
+    <!-- imgPath -->
+    <app-uploader [imagePath]="getImgSrc()" title="Upload an image for the topic" (bodyResponse)="imgListener($event)">
+    </app-uploader>
+    <input type="hidden" formControlName=imagePath />
+
+    <!-- submit -->
+    <button mat-raised-button color="accent" [disabled]='postForm.invalid' type="submit"
+      class="btn btn-warning">Submit</button>
+  </form>
+</section>

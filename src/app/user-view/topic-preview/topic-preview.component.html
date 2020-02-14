@@ -1,0 +1,16 @@
+<section class="content">
+  <div class="topics">
+    <mat-card *ngFor="let preview of topicPreviews; index as i; first as isFirst"
+    [ngStyle]="setStyle(i)">
+      <mat-card-header>
+        <mat-card-title>{{preview.name}}</mat-card-title>
+        <mat-card-subtitle>{{preview.date | dateInFull}}</mat-card-subtitle>
+      </mat-card-header>
+      <a [routerLink]="['/papers', preview._id]">
+        <div [ngStyle]="{'background-image':'url('+url+preview.imagePath+')'}"></div>
+      </a>
+      <mat-card-content>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>

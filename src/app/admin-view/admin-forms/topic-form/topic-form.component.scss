@@ -1,0 +1,9 @@
+// large display
+@media (min-width: 920px) {
+  .gridTable {
+    grid-template-columns: 1fr;
+  }
+  .gridTable > * {
+    grid-column: 1/3;
+  }
+}

@@ -1,0 +1,87 @@
+.container {
+  padding: 20px;
+  margin-top: 200px;
+  margin-bottom: 0;
+  max-width: 100vw;
+  background: #101010;
+  color: white;
+  display: grid;
+  column-gap: 0.8em;
+  font-size: 0.8em;
+  grid-template-columns: 2fr 0.5fr 2fr;
+
+  .about-company {
+    h2 {
+      font-size: 1.3em;
+    }
+    a {
+      color: white;
+      transition: color 0.2s;
+      &:hover {
+        color: yellow;
+      }
+    }
+  }
+
+  .links {
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li a {
+      color: white;
+      transition: color 0.2s;
+      &:hover {
+        text-decoration: none;
+        color: yellow;
+      }
+    }
+  }
+
+  .location {
+    color: yellow;
+    i {
+      font-size: 18px;
+    }
+  }
+
+  .footer {
+    grid-column: 1/4;
+    grid-row-start: 2;
+    text-align: center;
+    .copyright p {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 0;
+    }
+
+    .copyright a {
+      margin: 0;
+      padding: 0;
+      color: white;
+      font-size: 0.65em;
+      text-decoration: none;
+      transition: color 0.2s;
+      &:hover {
+        color: yellow;
+      }
+    }
+  }
+}
+
+@media (min-width: 320px) {
+  .container {
+    font-size: 0.6em;
+  }
+}
+
+@media (min-width: 360px) {
+  .container {
+    font-size: 0.7em;
+  }
+}
+
+@media (min-width: 651px) {
+  .container {
+    font-size: 1em;
+  }
+}

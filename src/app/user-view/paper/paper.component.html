@@ -1,0 +1,18 @@
+<section class="researches-section">
+  <span class="research-card" *ngFor="let paper of papers">
+    <img class="image" src="{{url+paper.imagePath}}">
+    <div class="card-content">
+      <div class="name">{{paper.title}}</div>
+      <div class="date">{{paper.paperDate | dateInFull}}</div>
+      <div class="abstract">{{paper.abstract}}</div>
+      <div class="footer">
+        <div class="references">{{paper.references}}</div>
+        <div class="researchers">
+          <div *ngFor="let researcher of paper.researchers">
+            <img [routerLink]="['/researchers/', researcher._id]" class="avatar" src="{{url + researcher.imagePath}}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </span>
+</section>
