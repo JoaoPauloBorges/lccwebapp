@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Carrousel } from 'src/app/shared/models/carrousel';
+import { Carrousel } from '../../../shared/models/carrousel';
 
 @Injectable({ providedIn: 'root' })
 export class CarrouselControlService {

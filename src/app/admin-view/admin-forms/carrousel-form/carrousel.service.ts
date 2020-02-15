@@ -1,9 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
-import { Carrousel } from 'src/app/shared/models/carrousel';
+import { Carrousel } from '../../../shared/models/carrousel';
 import { Observable, Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 const API = environment.backendrUrl + 'carrousel/';

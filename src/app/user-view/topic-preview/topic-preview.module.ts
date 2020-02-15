@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TopicPreviewComponent } from './topic-preview.component';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 
 

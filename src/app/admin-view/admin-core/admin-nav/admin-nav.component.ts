@@ -6,7 +6,7 @@ import { UserService } from '../user/user.service';
 import { User } from '../user/user';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Carrousel } from 'src/app/shared/models/carrousel';
+import { Carrousel } from '../../../shared/models/carrousel';
 import { environment } from 'src/environments/environment';
 
 const URL_RENDER = environment.backendrUrl + 'files/image/';

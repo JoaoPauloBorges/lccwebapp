@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
-import { Carrousel } from 'src/app/shared/models/carrousel';
+import { Carrousel } from '../../shared/models/carrousel';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 

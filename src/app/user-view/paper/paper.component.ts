@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Paper } from 'src/app/shared/models/paper';
+import { Paper } from '../../shared/models/paper';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-paper',

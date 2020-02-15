@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { Paper} from 'src/app/shared/models/paper';
+import { Paper} from '../../shared/models/paper';
 import { PaperService } from './paper.services';
 import { map } from 'rxjs/operators';
 

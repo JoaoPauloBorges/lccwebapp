@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Researcher } from 'src/app/shared/models/researcher';
+import { Researcher } from '../../shared/models/researcher';
 import { environment } from 'src/environments/environment';
 
 @Component({

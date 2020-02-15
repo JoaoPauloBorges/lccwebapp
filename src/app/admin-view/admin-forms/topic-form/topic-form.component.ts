@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TopicPreview } from 'src/app/shared/models/topic-preview';
+import { TopicPreview } from '../../../shared/models/topic-preview';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 

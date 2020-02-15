@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { TopicPreview } from '../../shared/models/topic-preview';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-topic-preview',

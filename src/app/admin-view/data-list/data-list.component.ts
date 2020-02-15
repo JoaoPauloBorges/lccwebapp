@@ -2,8 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
-import { Paper } from 'src/app/shared/models/paper';
-import { Researcher } from 'src/app/shared/models/researcher';
 
 
 @Component({
@@ -29,7 +27,7 @@ export class DataListComponent implements OnInit {
     this.dataSource.data = this.route.snapshot.data.dataSource;
     const url = this.route.snapshot.url.toString();
     if (this.dataSource.data.length > 0) {
-      
+
       switch (url) {
         case 'paper-list':
           this.displayedColumns = this.columnsPaper;

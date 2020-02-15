@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { Carrousel } from 'src/app/shared/models/carrousel';
+import { Carrousel } from '../../../shared/models/carrousel';
 import { CarrouselService } from './carrousel.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { CarrouselControlService } from './carrousel-form-control-service';

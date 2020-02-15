@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResearcherComponent } from './researcher.component';
-import { DemoMaterialModule } from 'src/app/shared/material/material.module';
+import { DemoMaterialModule } from '../../shared/material/material.module';
 
 
 

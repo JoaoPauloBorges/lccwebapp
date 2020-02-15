@@ -4,7 +4,7 @@ import { MyErrorStateMatcher } from '../MyErrorStateMatcher';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Researcher } from 'src/app/shared/models/researcher';
+import { Researcher } from '../../../shared/models/researcher';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
