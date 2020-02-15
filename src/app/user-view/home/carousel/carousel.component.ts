@@ -2,8 +2,8 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
-import { Carrousel } from '../../shared/models/carrousel';
-import { environment } from 'src/environments/environment';
+import { Carrousel } from '../../../shared/models/carrousel';
+import { environment } from '../../../../environments/environment';
 import { map } from 'rxjs/operators';
 
 const URL_RENDER = environment.backendrUrl + 'files/image/';

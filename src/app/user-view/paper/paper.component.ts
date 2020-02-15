@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Paper } from '../../shared/models/paper';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

@@ -1,9 +1,7 @@
-import { TopicPreviewService } from './topic-preview.services';
 import { Component, OnInit } from '@angular/core';
 import { TopicPreview } from '../../shared/models/topic-preview';
 import { ActivatedRoute } from '@angular/router';
-import { environment } from 'src/environments/environment';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-topic-preview',
@@ -17,8 +15,7 @@ export class TopicPreviewComponent implements OnInit {
   topicPreviews: TopicPreview[];
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private snackBar: MatSnackBar) { }
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.topicPreviews = this.activatedRoute.snapshot.data.topics;
@@ -28,8 +25,8 @@ export class TopicPreviewComponent implements OnInit {
   setStyle(index) {
     index++;
     return {
-      'grid-column': index%2 !== 0 ? '1/2' : '2/3',
+      'grid-column': index % 2 !== 0 ? '1/2' : '2/3',
       'grid-row-start': index
-    }
+    };
   }
 }
