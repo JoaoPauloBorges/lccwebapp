@@ -24,7 +24,7 @@
         </mat-error>
       </mat-form-field>
 
-      <button mat-raised-button [disabled]='loginForm.invalid' type="submit" color="accent">Login</button>
+      <button mat-raised-button (click)="logi" [disabled]='loginForm.invalid' type="submit" color="accent">Login</button>
     </form>
     <button mat-raised-button routerLink="/home">Cancelar</button>
   </section>
