@@ -3,18 +3,18 @@ const ValidationMiddleware = require('../common/middleware/auth.validation.middl
 
 
 exports.routesConfig = function (app) {
-    app.post('/users', [
+    app.post('/api/users', [
         UsersController.insert
     ]);
-    app.get('/users', [
+    app.get('/api/users', [
         ValidationMiddleware.validJWTNeeded,
         UsersController.list
     ]);
-    app.get('/users/:userId', [
+    app.get('/api/users/:userId', [
         ValidationMiddleware.validJWTNeeded,
         UsersController.getById
     ]);
-    app.delete('/users/:userId', [
+    app.delete('/api/users/:userId', [
         ValidationMiddleware.validJWTNeeded,
         UsersController.removeById
     ]);
