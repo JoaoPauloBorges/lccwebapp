@@ -6,7 +6,7 @@
 
       <mat-form-field>
         <input #emailInput matInput placeholder="Email" formControlName="email"
-        (cdkAutofill)="emailAutofilled($event.isAutofilled)" [errorStateMatcher]="matcher">
+          (cdkAutofill)="emailAutofilled($event.isAutofilled)" [errorStateMatcher]="matcher">
         <mat-error *ngIf="loginForm.get('email').errors?.email">
           Invalid e-mail!
         </mat-error>
@@ -17,7 +17,7 @@
 
       <mat-form-field>
         <input matInput formControlName="password" [type]="hide ? 'password' : 'text'"
-        (cdkAutofill)="passwordAutofilled($event.isAutofilled)" placeholder="Password">
+          (cdkAutofill)="passwordAutofilled($event.isAutofilled)" placeholder="Password">
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         <mat-error *ngIf="!!loginForm.get('password').errors?.required">
           Password is required!
@@ -26,6 +26,8 @@
 
       <button mat-raised-button [disabled]='loginForm.invalid' type="submit" color="accent">Login</button>
     </form>
-    <button mat-raised-button href="/home">Cancelar</button>
+    <form>
+      <button mat-raised-button routerLink="/home">Cancelar</button>
+    </form>
   </section>
 </section>
