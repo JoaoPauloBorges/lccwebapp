@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('path');
+const nomeApp = process.env.npm_package_name;
+
 
 const config = require('./server/common/config/env.config.js');
 const AuthorizationRouter = require('./server/auth/auth.routes.config');
@@ -34,8 +36,10 @@ app.use('/api/posts', require('./server/api/routes/post.routes.config'));
 AuthorizationRouter.routesConfig(app);
 UsersRouter.routesConfig(app);
 
-var distDir = __dirname + "/dist/";
-app.use(express.static(distDir));
+app.use(express.static(`${__dirname}/dist/${nomeApp}`));
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(`${__dirname}/dist/${nomeApp}/index.html`));
+    });
 
 // Initialize the app.
 var server = app.listen(process.env.PORT || config.port, function () {

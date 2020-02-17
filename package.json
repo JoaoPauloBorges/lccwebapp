@@ -6,7 +6,6 @@
     "npm": "6.13.x"
   },
   "scripts": {
-    "ng": "ng",
     "start": "node app.js",
     "dev": "ng serve",
     "build": "ng build",
