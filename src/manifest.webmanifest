@@ -10,8 +10,13 @@
     {
       "src": "assets/icons/icon-196x196.png",
       "sizes": "196x196",
-      "type": "image/png",
-	"purpose": "any maskable"
+      "type": "image/png"
+    },
+    {
+	"src": "assets/icons/icon-512x512.png",
+	"sizes": "512x512",
+	"type": "image/png",
+	"purpouse": "maskable"
     }
   ]
 }
