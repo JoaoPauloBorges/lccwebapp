@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "angularLCC",
+      "public": "dist/angularLCC",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

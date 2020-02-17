@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "lccwebapp": {
+      "hosting": {
+        "angularLCC": [
+          "lccwebapp"
+        ]
+      }
+    }
+  }
+}
