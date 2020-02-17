@@ -2,7 +2,8 @@
   "name": "angular-lcc",
   "version": "0.0.0",
   "engines": {
-    "node": "12.13.1"
+    "node": "12.13.x",
+    "npm": "6.13.x"
   },
   "scripts": {
     "ng": "ng",
@@ -12,7 +13,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --output-path dist"
+    "postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {
