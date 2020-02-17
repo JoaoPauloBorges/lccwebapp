@@ -1,11 +1,11 @@
 {
-  "name": "angularLCC",
-  "short_name": "angularLCC",
+  "name": "LCC",
+  "short_name": "LCC",
   "theme_color": "#101010",
-  "background_color": "#fafafa",
+  "background_color": "#101010",
   "display": "standalone",
   "scope": "/",
-  "start_url": "/",
+  "start_url": "/admin",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
