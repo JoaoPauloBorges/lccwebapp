@@ -10,7 +10,7 @@ export interface FileUpload {
   filename: string;
 }
 
-const IMG_RENDER =  environment.backendrUrl + 'files/image/';
+const IMG_RENDER =  'api/files/image/';
 
 @Component({
   selector: 'app-uploader',

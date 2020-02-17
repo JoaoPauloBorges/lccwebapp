@@ -7,9 +7,8 @@ import { User } from '../user/user';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Carrousel } from '../../../shared/models/carrousel';
-import { environment } from '../../../../environments/environment';
 
-const URL_RENDER = environment.backendrUrl + 'files/image/';
+const URL_RENDER = 'api/files/image/';
 
 @Component({
   selector: 'app-admin-nav',
@@ -39,7 +38,7 @@ export class AdminNavComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.logoPath = this.http.get<Carrousel>(environment.backendrUrl + 'carrousel/logo', { observe: 'body' })
+    this.logoPath = this.http.get<Carrousel>('api/carrousel/logo', { observe: 'body' })
       .pipe(
         map(resp => URL_RENDER + resp.imagePath)
       );

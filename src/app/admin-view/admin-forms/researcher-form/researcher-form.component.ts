@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs';
 })
 export class ResearcherFormComponent implements OnInit, OnDestroy {
   researcherForm: FormGroup;
-  SERVER_URL = environment.backendrUrl + 'researchers/';
+  SERVER_URL = 'api/researchers/';
   title = 'Registration';
 
   matcher = new MyErrorStateMatcher();

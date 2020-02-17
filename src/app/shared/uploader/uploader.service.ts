@@ -4,7 +4,7 @@ import { environment } from '../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 
-const API = environment.backendrUrl + 'files/';
+const API = 'api/files/';
 
 @Injectable({ providedIn: 'root' })
 

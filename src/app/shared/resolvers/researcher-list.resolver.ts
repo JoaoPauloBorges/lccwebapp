@@ -9,7 +9,7 @@ import { Researcher } from '../models/researcher';
 @Injectable({ providedIn: 'root' })
 export class ResearcherListResolver implements Resolve<Researcher[]> {
 
-  SERVER_URL = environment.backendrUrl + 'researchers';
+  SERVER_URL = 'api/researchers';
 
   constructor(private httpClient: HttpClient) { }
 

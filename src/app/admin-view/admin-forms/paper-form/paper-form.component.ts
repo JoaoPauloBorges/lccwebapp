@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { environment } from '../../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Researcher } from '../../../shared/models/researcher';
 import { TopicPreview } from '../../../shared/models/topic-preview';
@@ -19,7 +18,7 @@ export class PaperFormComponent implements OnInit, OnDestroy {
 
   paperForm: FormGroup;
   paper: Paper;
-  SERVER_URL = environment.backendrUrl + 'papers/';
+  SERVER_URL = 'api/papers/';
   title = 'Registration';
   subs: Subscription[] = [];
 

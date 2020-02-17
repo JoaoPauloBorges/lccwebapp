@@ -10,7 +10,7 @@ import { Paper } from '../models/paper';
 @Injectable({ providedIn: 'root' })
 export class PaperListResolver implements Resolve<Paper[]> {
 
-  SERVER_URL = environment.backendrUrl + 'papers';
+  SERVER_URL = 'api/papers';
 
   constructor(private httpClient: HttpClient) { }
 

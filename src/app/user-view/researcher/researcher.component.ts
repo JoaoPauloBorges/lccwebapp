@@ -10,7 +10,7 @@ import { environment } from '../../../environments/environment';
 })
 export class ResearcherComponent implements OnInit {
 
-  url = environment.backendrUrl + 'files/image/';
+  url = 'api/files/image/';
 
   researcher: Researcher;
 

@@ -2,11 +2,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { Carrousel } from '../../../shared/models/carrousel';
 import { Observable, Subscription } from 'rxjs';
-import { environment } from '../../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 
-const API = environment.backendrUrl + 'carrousel/';
+const API = 'api/carrousel/';
 
 @Injectable({ providedIn: 'root' })
 

@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-const SERVER_URL = environment.backendrUrl + 'posts/';
+const SERVER_URL = 'api/posts/';
 
 @Component({
   selector: 'app-post-form',

@@ -7,7 +7,9 @@ const UsersRouter = require('./users/users.routes.config');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); //what is this for?
-app.set('view engine', 'ejs');
+
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
 
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -25,12 +27,12 @@ app.use(function (req, res, next) {
 app.use('/', require('./routes/routes.config'));
 
 // api
-app.use('/researchers', require('./api/routes/researcher.routes.config'));
-app.use('/papers', require('./api/routes/paper.routes.config'));
-app.use('/files', require('./api/routes/files-upload.routes.config'));
-app.use('/topics', require('./api/routes/topic.routes.config'));
-app.use('/carrousel', require('./api/routes/carrousel.routes.config'));
-app.use('/posts', require('./api/routes/post.routes.config'));
+app.use('api/researchers', require('./api/routes/researcher.routes.config'));
+app.use('api/papers', require('./api/routes/paper.routes.config'));
+app.use('api/files', require('./api/routes/files-upload.routes.config'));
+app.use('api/topics', require('./api/routes/topic.routes.config'));
+app.use('api/carrousel', require('./api/routes/carrousel.routes.config'));
+app.use('api/posts', require('./api/routes/post.routes.config'));
 
 // auth and users
 AuthorizationRouter.routesConfig(app);
