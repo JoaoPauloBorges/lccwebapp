@@ -32,13 +32,13 @@ export class SigninComponent implements OnInit, OnDestroy {
   }
 
   passwordAutofilled(isAutoFilled: boolean) {
-      // tslint:disable-next-line: no-unused-expression
-      this.loginForm.get('password').updateValueAndValidity;
+    // tslint:disable-next-line: no-unused-expression
+    this.loginForm.get('password').updateValueAndValidity;
   }
 
   emailAutofilled(isAutoFilled: boolean) {
-      // tslint:disable-next-line: no-unused-expression
-      this.loginForm.get('email').updateValueAndValidity;
+    // tslint:disable-next-line: no-unused-expression
+    this.loginForm.get('email').updateValueAndValidity;
   }
 
   login() {
@@ -52,13 +52,15 @@ export class SigninComponent implements OnInit, OnDestroy {
           console.log(err);
           this.loginForm.get('password').reset();
           this.emailInput.nativeElement.focus();
-          this.snackBar.open('Invalid username or password', 'x', {duration: 2000});
+          this.snackBar.open('Invalid username or password', 'x', { duration: 2000 });
         }
       );
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    if (!!this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
 }

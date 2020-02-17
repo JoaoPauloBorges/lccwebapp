@@ -2,7 +2,7 @@
   <section class="content">
     <h2> Login</h2>
 
-    <form [formGroup]="loginForm" (submit)="login()">
+    <form [formGroup]="loginForm">
 
       <mat-form-field>
         <input #emailInput matInput placeholder="Email" formControlName="email"
@@ -26,8 +26,6 @@
 
       <button mat-raised-button [disabled]='loginForm.invalid' type="submit" color="accent">Login</button>
     </form>
-    <form>
-      <button mat-raised-button routerLink="/home">Cancelar</button>
-    </form>
+    <button mat-raised-button routerLink="/home">Cancelar</button>
   </section>
 </section>
