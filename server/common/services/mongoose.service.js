@@ -17,7 +17,7 @@ const url = "mongodb+srv://mongodb:mongodb@mongouploads-xlhnt.gcp.mongodb.net/lc
 
 const connectWithRetry = () => {
     console.log('MongoDB connection with retry')
-    mongoose.connect(process.env.MONGODB_URI || url, options).then(()=>{
+    mongoose.connect(url, options).then(()=>{
         console.log('MongoDB is connected')
     }).catch(err=>{
         console.log('MongoDB connection unsuccessful, retry after 5 seconds. ', ++count);
