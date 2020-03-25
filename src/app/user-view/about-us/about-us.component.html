@@ -9,7 +9,7 @@
       <mat-card *ngFor="let researcher of researchers" [routerLink]="['/researchers/', researcher._id]">
         <mat-card-header>
           <div mat-card-avatar [ngStyle]="{'background-image':'url('+url+researcher.imagePath+')'}"
-            class="header-image">
+            class="header-image header-image--{{researcher.type.toLowerCase()}}">
           </div>
           <mat-card-title>{{researcher.name}}</mat-card-title>
           <mat-card-subtitle>{{researcher.headline}}</mat-card-subtitle>
