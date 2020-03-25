@@ -3,6 +3,11 @@ const mongoose = require('../common/services/mongoose.service').mongoose;
 const Schema = mongoose.Schema;
 
 const researcherSchema = Schema({
+   type: {
+      type: String,
+      enum: ['Researcher', 'Coordinator', 'Partner'],
+      default: 'Researcher'
+   },
    name: String,
    abbreviation: String,
    headline: String,
