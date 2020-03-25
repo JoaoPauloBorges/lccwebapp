@@ -4,7 +4,7 @@ import { MyErrorStateMatcher } from '../MyErrorStateMatcher';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Researcher } from '../../../shared/models/researcher';
+import { Researcher, ResearcherTypes } from '../../../shared/models/researcher';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -21,6 +21,7 @@ export class ResearcherFormComponent implements OnInit, OnDestroy {
 
   matcher = new MyErrorStateMatcher();
   subs: Subscription[] = [];
+  types: ResearcherTypes[];
   researcher: Researcher;
 
   constructor(
@@ -30,8 +31,10 @@ export class ResearcherFormComponent implements OnInit, OnDestroy {
     private snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.types = Object.values(ResearcherTypes);
     this.researcher = this.activatedRoute.snapshot.data.researcher;
     this.researcherForm = this.formBuilder.group({
+      type: ['', Validators.required],
       email: ['', [Validators.email, Validators.required]],
       name: ['', Validators.required],
       abbreviation: ['', Validators.required],
@@ -45,10 +48,13 @@ export class ResearcherFormComponent implements OnInit, OnDestroy {
     if (this.researcher != null ) {
       this.title = 'Edition';
       this.fillForm();
+    } else {      
+      this.researcherForm.get('type').setValue(ResearcherTypes.Researcher);
     }
   }
 
   fillForm() {
+    this.researcherForm.get('type').setValue(this.researcher.type);
     this.researcherForm.get('email').setValue(this.researcher.email);
     this.researcherForm.get('name').setValue(this.researcher.name);
     this.researcherForm.get('abbreviation').setValue(this.researcher.abbreviation);

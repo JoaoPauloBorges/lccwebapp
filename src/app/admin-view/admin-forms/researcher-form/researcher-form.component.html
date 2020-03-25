@@ -3,6 +3,16 @@
 <h4>Researcher {{title}}</h4>
 
   <form [formGroup]="researcherForm" (ngSubmit)="onSubmit()"  class="gridTable row-1 forms">
+    <!-- type (select One) -->
+    <mat-form-field>
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let type of types" [value]="type">
+          {{type}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br/>
     <!-- name -->
     <mat-form-field>
       <input matInput formControlName="name" maxlength="50" placeholder="Researcher name">
