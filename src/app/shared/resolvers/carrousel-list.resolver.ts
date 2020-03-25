@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({ providedIn: 'root' })
 export class CarrouselListResolver implements Resolve<Carrousel[]> {
 
-  SERVER_URL = 'api/carrousel/';
+  SERVER_URL = `${environment.backendUrl}/api/carrousel/`;
 
   constructor(private httpClient: HttpClient) { }
 

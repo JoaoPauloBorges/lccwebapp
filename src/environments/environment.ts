@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendrUrl : 'http://' + window.location.hostname + ':3000/'
+  backendUrl : `http://${window.location.hostname}:3000`
 };
 
 /*

@@ -10,7 +10,7 @@ import { Post } from '../models/post';
 @Injectable({ providedIn: 'root' })
 export class PostFormResolver implements Resolve<Post> {
 
-  SERVER_URL = 'api/posts/';
+  SERVER_URL = `${environment.backendUrl}/api/posts/`;
 
   constructor(private httpClient: HttpClient) { }
 

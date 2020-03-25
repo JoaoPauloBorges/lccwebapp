@@ -13,7 +13,7 @@ import { map, tap } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
 
-  urlrender = 'api/files/image/';
+  urlrender = `${environment.backendUrl}/api/files/image/`;
 
   logoPath: Observable<string>;
   invertColor = true;
@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.logoPath = this.http.get<Carrousel>('api/carrousel/logo', {observe: 'body'})
+    this.logoPath = this.http.get<Carrousel>(`${environment.backendUrl}/api/carrousel/logo`, {observe: 'body'})
     .pipe(tap(resp => this.invertColor = resp.invertColor),
       map( resp => this.urlrender + resp.imagePath)
     );

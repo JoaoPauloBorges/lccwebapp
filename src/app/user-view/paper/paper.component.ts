@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./paper.component.scss']
 })
 export class PaperComponent implements OnInit {
-  url = 'api/files/image/';
+  url = `${environment.backendUrl}/api/files/image/`;
 
   @Input() papers: Paper[];
   constructor(private activatedRoute: ActivatedRoute) { }

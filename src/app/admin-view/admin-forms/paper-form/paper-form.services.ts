@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 
 
-const API = 'api/papers/';
+const API = `${environment.backendUrl}/api/papers/`;
 
 @Injectable({ providedIn: 'root' })
 

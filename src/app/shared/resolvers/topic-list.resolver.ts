@@ -10,7 +10,7 @@ import { map, filter } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class TopicListResolver implements Resolve<TopicPreview[]> {
 
-  SERVER_URL = 'api/topics';
+  SERVER_URL = `${environment.backendUrl}/api/topics`;
 
   constructor(private httpClient: HttpClient) { }
 

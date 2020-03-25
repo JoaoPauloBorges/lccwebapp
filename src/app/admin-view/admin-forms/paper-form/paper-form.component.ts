@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Paper } from '../../../shared/models/paper';
 import { PaperFormService } from './paper-form.services';
 import { Subscription } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class PaperFormComponent implements OnInit, OnDestroy {
 
   paperForm: FormGroup;
   paper: Paper;
-  SERVER_URL = 'api/papers/';
+  SERVER_URL = `${environment.backendUrl}/api/papers/`;
   title = 'Registration';
   subs: Subscription[] = [];
 

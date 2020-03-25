@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 
-const API = 'api/papers/topic/';
+const API = `${environment.backendUrl}/api/papers/topic/`;
 
 @Injectable({ providedIn: 'root' })
 export class PaperService {

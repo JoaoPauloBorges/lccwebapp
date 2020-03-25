@@ -10,7 +10,7 @@ import { environment } from '../../../environments/environment';
 })
 export class TopicPreviewComponent implements OnInit {
 
-  url = 'api/files/image/';
+  url = `${environment.backendUrl}/api/files/image/`;
 
   topicPreviews: TopicPreview[];
 

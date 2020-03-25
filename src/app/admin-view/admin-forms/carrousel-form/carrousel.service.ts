@@ -3,9 +3,10 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { Carrousel } from '../../../shared/models/carrousel';
 import { Observable, Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 
 
-const API = 'api/carrousel/';
+const API = `${environment.backendUrl}/api/carrousel/`;
 
 @Injectable({ providedIn: 'root' })
 

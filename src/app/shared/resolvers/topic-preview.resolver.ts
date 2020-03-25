@@ -10,7 +10,7 @@ import { TopicPreview } from '../models/topic-preview';
 @Injectable({ providedIn: 'root' })
 export class TopicPreviewResolver implements Resolve<TopicPreview> {
 
-  SERVER_URL = 'api/topics/';
+  SERVER_URL = `${environment.backendUrl}/api/topics/`;
 
   constructor(private httpClient: HttpClient) { }
 

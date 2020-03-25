@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
 export class TopicFormComponent implements OnInit, OnDestroy {
 
   topicForm: FormGroup;
-  SERVER_URL = 'api/topics/';
+  SERVER_URL = `${environment.backendUrl}/api/topics/`;
   topicPreview: TopicPreview;
   subs: Subscription[] = [];
   title = 'Registration';

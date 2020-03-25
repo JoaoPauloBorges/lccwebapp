@@ -6,7 +6,7 @@ import { Carrousel } from '../../../shared/models/carrousel';
 import { environment } from '../../../../environments/environment';
 import { map } from 'rxjs/operators';
 
-const URL_RENDER = 'api/files/image/';
+const URL_RENDER = `${environment.backendUrl}/api/files/image/`;
 
 @Component({
   selector: 'app-carousel',
@@ -35,7 +35,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.imgPaths = this.http.get<Carrousel>('api/carrousel/' + this.page)
+    this.imgPaths = this.http.get<Carrousel>(`${environment.backendUrl}/api/carrousel/` + this.page)
       .pipe(map(resp => {
           return resp.imagePath.map(path => {
             return URL_RENDER + path;
