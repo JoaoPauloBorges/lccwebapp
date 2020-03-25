@@ -9,7 +9,7 @@
         <div class="references">{{paper.references}}</div>
         <div class="researchers">
           <div *ngFor="let researcher of paper.researchers">
-            <img [routerLink]="['/researchers/', researcher._id]" class="avatar" src="{{url + researcher.imagePath}}">
+            <img [routerLink]="['/researchers/', researcher._id]" class="avatar avatar--{{researcher.type.toLowerCase()}}" src="{{url + researcher.imagePath}}">
           </div>
         </div>
       </div>

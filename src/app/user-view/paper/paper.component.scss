@@ -22,6 +22,18 @@
   border: 2px dashed black;
 }
 
+.avatar--researcher {
+  border: 2px dashed #aa3939;
+}
+
+.avatar--coordinator {
+  border: 2px dashed #7b9f35;
+}
+
+.avatar--partner {
+  border: 2px dashed #226666;
+}
+
 .research-card {
   display: grid;
   .card-content {
