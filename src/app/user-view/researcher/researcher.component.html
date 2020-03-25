@@ -1,9 +1,10 @@
 <section class="container">
   <div class="content">
     <section class="header">
-      <img class="card-avatar" src="{{url + researcher.imagePath}}">
+      <img class="card-avatar card-avatar--{{researcher.type.toLowerCase()}}" src="{{url + researcher.imagePath}}">
       <div>
         <h2>{{researcher.name}}</h2>
+        <p class="header-type header-type--{{researcher.type.toLowerCase()}}">{{researcher.type}}</p>
         <P>{{researcher.headline}}</P>
       </div>
     </section>
