@@ -40,6 +40,18 @@ h2 {
   background-size: cover;
 }
 
+.header-image--researcher {
+  border: 2px solid #aa3939;
+}
+
+.header-image--coordinator {
+  border: 2px solid #7b9f35;
+}
+
+.header-image--partner {
+  border: 2px solid #226666;
+}
+
 .researchers{
   display: grid;
   grid-template-columns: 1fr;
