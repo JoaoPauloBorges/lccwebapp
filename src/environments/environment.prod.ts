@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  backendUrl : `http://${window.location.hostname}`
+  backendUrl : `${window.location.protocol}//${window.location.hostname}`
 };
