@@ -5,7 +5,7 @@ const nomeApp = config.appName;
 
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended: false })); //what is this for?
+app.use(express.urlencoded({ extended: false }));
 
 app.use(config.cors);
 

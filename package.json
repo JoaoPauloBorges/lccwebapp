@@ -1,6 +1,7 @@
 {
   "name": "angular-lcc",
   "version": "0.0.0",
+  "main": "server.js",
   "engines": {
     "node": "12.13.x",
     "npm": "6.13.x"
