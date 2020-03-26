@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MyErrorStateMatcher } from '../MyErrorStateMatcher';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Researcher, ResearcherTypes } from '../../../shared/models/researcher';
 import { ActivatedRoute } from '@angular/router';
@@ -48,8 +47,6 @@ export class ResearcherFormComponent implements OnInit, OnDestroy {
     if (this.researcher != null ) {
       this.title = 'Edition';
       this.fillForm();
-    } else {      
-      this.researcherForm.get('type').setValue(ResearcherTypes.Researcher);
     }
   }
 
