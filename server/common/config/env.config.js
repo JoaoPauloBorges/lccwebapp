@@ -1,5 +1,5 @@
 module.exports = {
-    "port": process.env.port || 3000,
+    "port": process.env.PORT || 3000,
     "appName": process.env.npm_package_name || "angular-lcc",
     "apiEndpoint": "http://localhost:3000",
     "jwt_secret": "meuSegredoEAlegria",
