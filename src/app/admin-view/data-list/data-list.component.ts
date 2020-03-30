@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class DataListComponent implements OnInit {
   columnsResearcher: string[] = ['name', 'headline', 'abbreviation', 'lattesUrl'];
   columnsPaper: string[] = ['title', 'paperDate', 'references'];
-  columnsTopic: string[] = ['name', 'date'];
+  columnsTopic: string[] = ['name', 'description'];
   columnsPost: string[] = ['author', 'title' , 'date'];
 
   displayedColumns: string[];
