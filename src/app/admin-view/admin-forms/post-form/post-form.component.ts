@@ -6,6 +6,8 @@ import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialog } from '../../../shared/confirmation-dialog/confirmation-dialog';
 
 const SERVER_URL = 'api/posts/';
 
@@ -24,7 +26,8 @@ export class PostFormComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private httpCliente: HttpClient,
     private activatedRoute: ActivatedRoute,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.post = this.activatedRoute.snapshot.data.post;
@@ -79,6 +82,25 @@ export class PostFormComponent implements OnInit, OnDestroy {
             this.snackBar.open('Something went wrong, reload and try again', 'x', { duration: 2000 });
         }));
     }
+  }
+  
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmationDialog, {
+      width: '300px',
+      data: { title: 'Are you sure you want to delete this post?', },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.subs.push(this.httpCliente.delete(SERVER_URL + this.post._id)
+          .subscribe(res => {
+            this.snackBar.open('Successfully Deleted', 'x', { duration: 2000, });
+            window.location.pathname = '/admin/post-list';
+          }, err => {
+            console.log(err),
+              this.snackBar.open('Something went wrong, reload and try again', 'x', { duration: 2000, });
+          }));
+      }
+    });
   }
 
   ngOnDestroy(): void {
