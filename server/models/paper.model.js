@@ -44,6 +44,13 @@ exports.findByTopicId = (topicId) => {
       .exec();
 };
 
+exports.findByResearcherId = (researcherId) => {
+   return Paper
+      .find({ researchers: { $in: [researcherId] } })
+      .populate('researchers')
+      .exec();
+};
+
 exports.list = (perPage, page) => {
    return new Promise((resolve, reject) => {
       Paper.find()
