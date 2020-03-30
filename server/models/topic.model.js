@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const topicSchema = Schema({
    name: String,
-   date: Date,
+   description: String,
    imagePath: String,
 }, { versionKey: false });
 
