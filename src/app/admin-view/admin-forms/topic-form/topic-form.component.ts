@@ -30,7 +30,7 @@ export class TopicFormComponent implements OnInit, OnDestroy {
     this.topicPreview = this.activatedRoute.snapshot.data.topic;
     this.topicForm = this.formBuilder.group({
       name: ['', Validators.required],
-      date: ['', Validators.required],
+      description: ['', Validators.required],
       imagePath: ['', Validators.required]
     });
 
@@ -42,7 +42,7 @@ export class TopicFormComponent implements OnInit, OnDestroy {
 
   fillForm() {
     this.topicForm.get('name').setValue(this.topicPreview.name);
-    this.topicForm.get('date').setValue(this.topicPreview.date);
+    this.topicForm.get('description').setValue(this.topicPreview.description);
     this.topicForm.get('imagePath').setValue(this.topicPreview.imagePath);
   }
 
