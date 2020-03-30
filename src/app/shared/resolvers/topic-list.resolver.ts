@@ -16,10 +16,6 @@ export class TopicListResolver implements Resolve<TopicPreview[]> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
     TopicPreview[] | Observable<TopicPreview[]> | Promise<TopicPreview[]> {
-    return this.httpClient.get<TopicPreview[]>(this.SERVER_URL)
-      .pipe(
-        map(resp => (
-          resp.filter(obj => obj.date = new Date(obj.date))
-        )));
+    return this.httpClient.get<TopicPreview[]>(this.SERVER_URL);
   }
 }
