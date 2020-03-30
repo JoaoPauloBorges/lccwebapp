@@ -42,6 +42,13 @@ exports.getByTopicId = (req, res) => {
         });
 };
 
+exports.getByResearcherId = (req, res) => {
+    PaperModel.findByResearcherId(req.params.paperId)
+        .then((result) => {
+            res.status(200).send(result);
+        });
+};
+
 exports.removeById = (req, res) => {
     PaperModel.removeById(req.params.paperId)
         .then((result) => {

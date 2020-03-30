@@ -27,6 +27,10 @@ router.get('/topic/:paperId', [
     // ValidationMiddleware.validJWTNeeded,
     PaperController.getByTopicId
 ]);
+router.get('/researcher/:paperId', [
+    // ValidationMiddleware.validJWTNeeded,
+    PaperController.getByResearcherId
+]);
 
 module.exports = router;
 
