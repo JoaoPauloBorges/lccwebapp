@@ -19,5 +19,9 @@ export class PaperFormService {
     return this.http.patch(API + id, formData);
   }
 
+  paperDeletion(id: string) {
+    return this.http.delete(API + id);
+  }
+
 }
 

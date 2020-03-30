@@ -68,5 +68,9 @@
     <!-- submit -->
     <button mat-raised-button color="accent" [disabled]='paperForm.invalid' type="submit"
       class="btn btn-warning">Submit</button>
+
+    <!-- delete -->
+    <button *ngIf="this.title !== 'Registration'" mat-raised-button color="warn" (click)="openDialog()" type="button"
+      class="btn btn-warning">Delete</button>
   </form>
 </section>

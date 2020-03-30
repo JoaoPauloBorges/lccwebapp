@@ -7,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Paper } from '../../../shared/models/paper';
 import { PaperFormService } from './paper-form.services';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialog } from '../../../shared/confirmation-dialog/confirmation-dialog';
 
 
 @Component({
@@ -30,7 +32,8 @@ export class PaperFormComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private snackBar: MatSnackBar,
-    private service: PaperFormService) { }
+    private service: PaperFormService,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.topics = this.activatedRoute.snapshot.data.topics;
@@ -103,6 +106,25 @@ export class PaperFormComponent implements OnInit, OnDestroy {
             this.snackBar.open('Something went wrong, reload and try again', 'x', { duration: 2000, });
         }));
     }
+  }
+  
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmationDialog, {
+      width: '300px',
+      data: { title: 'Are you sure you want to delete this paper?', },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.subs.push(this.service.paperDeletion(this.paper._id)
+          .subscribe(res => {
+            this.snackBar.open('Successfully Deleted', 'x', { duration: 2000, });
+            window.location.pathname = '/admin/paper-list';
+          }, err => {
+            console.log(err),
+              this.snackBar.open('Something went wrong, reload and try again', 'x', { duration: 2000, });
+          }));
+      }
+    });
   }
 
   ngOnDestroy(): void {
