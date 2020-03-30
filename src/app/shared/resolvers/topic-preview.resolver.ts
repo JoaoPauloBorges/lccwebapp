@@ -16,7 +16,6 @@ export class TopicPreviewResolver implements Resolve<TopicPreview> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<TopicPreview> {
     const id: string = route.params.topicId;
-    return this.httpClient.get<TopicPreview>(this.SERVER_URL + id)
-    .pipe(map(obj => ({...obj, date: new Date(obj.date)})));
+    return this.httpClient.get<TopicPreview>(this.SERVER_URL + id);
   }
 }
