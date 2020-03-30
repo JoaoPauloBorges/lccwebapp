@@ -6,6 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Researcher, ResearcherTypes } from '../../../shared/models/researcher';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialog } from '../../../shared/confirmation-dialog/confirmation-dialog';
 
 
 @Component({
@@ -27,7 +29,8 @@ export class ResearcherFormComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private httpCliente: HttpClient,
     private activatedRoute: ActivatedRoute,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.types = Object.values(ResearcherTypes);
@@ -100,6 +103,29 @@ export class ResearcherFormComponent implements OnInit, OnDestroy {
           });
       }));
     }
+  }
+  
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmationDialog, {
+      width: '300px',
+      data: { title: 'Are you sure you want to delete this researcher?', },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.subs.push(this.httpCliente.delete(this.SERVER_URL + this.researcher._id)
+          .subscribe(res => {
+            this.snackBar.open('Successfully deleted!', 'x', {
+              duration: 2000,
+            });
+            window.location.pathname = '/admin/researcher-list';
+          }, err => {
+            console.log(err),
+              this.snackBar.open('Something went wrong, reload and try again', 'x', {
+                duration: 2000,
+              });
+          }));
+      }
+    });
   }
 
   ngOnDestroy() {
