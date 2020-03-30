@@ -6,6 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { TopicPreview } from '../../../shared/models/topic-preview';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialog } from '../../../shared/confirmation-dialog/confirmation-dialog';
 
 @Component({
   selector: 'app-topic-form',
@@ -24,7 +26,8 @@ export class TopicFormComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private httpCliente: HttpClient,
     private activatedRoute: ActivatedRoute,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     this.topicPreview = this.activatedRoute.snapshot.data.topic;
@@ -85,6 +88,29 @@ export class TopicFormComponent implements OnInit, OnDestroy {
             });
         }));
     }
+  }
+  
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmationDialog, {
+      width: '300px',
+      data: { title: 'Are you sure you want to delete this topic?', },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.subs.push(this.httpCliente.delete(this.SERVER_URL + this.topicPreview._id)
+          .subscribe(res => {
+            this.snackBar.open('Successfully Deleted', 'x', {
+              duration: 2000,
+            });
+            window.location.pathname = '/admin/topic-list';
+          }, err => {
+            console.log(err),
+              this.snackBar.open('Something went wrong, reload and try again', 'x', {
+                duration: 2000,
+              });
+          }));
+      }
+    });
   }
 
   ngOnDestroy(): void {
