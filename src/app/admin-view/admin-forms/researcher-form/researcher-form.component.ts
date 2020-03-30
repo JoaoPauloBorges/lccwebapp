@@ -5,9 +5,11 @@ import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Researcher, ResearcherTypes } from '../../../shared/models/researcher';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, concat, forkJoin } from 'rxjs';
+import { concatMap, last, toArray } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialog } from '../../../shared/confirmation-dialog/confirmation-dialog';
+import { Paper } from 'src/app/shared/models/paper';
 
 
 @Component({
@@ -18,6 +20,8 @@ import { ConfirmationDialog } from '../../../shared/confirmation-dialog/confirma
 export class ResearcherFormComponent implements OnInit, OnDestroy {
   researcherForm: FormGroup;
   SERVER_URL = 'api/researchers/';
+  PAPERS_URL = 'api/papers/';
+  RESEARCHER_PAPERS_URL = this.PAPERS_URL + 'researcher/';
   title = 'Registration';
 
   matcher = new MyErrorStateMatcher();
@@ -112,7 +116,27 @@ export class ResearcherFormComponent implements OnInit, OnDestroy {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.subs.push(this.httpCliente.delete(this.SERVER_URL + this.researcher._id)
+        this.subs.push(this.httpCliente.get<Paper[]>(this.RESEARCHER_PAPERS_URL + this.researcher._id)
+          .pipe(
+            last(),
+            concatMap(papers => {
+              // First update every paper registered under the researcher
+              const papersToUpdate = [];
+              for (const paper of papers) {
+                const paperData = {
+                  ...paper,
+                  researchers: paper.researchers.map(researcher => researcher._id)
+                    .filter(researcherId => researcherId !== this.researcher._id),
+                };
+                papersToUpdate.push(this.httpCliente.patch(this.PAPERS_URL + paper._id, paperData));
+              }
+              const updatePapers = forkJoin(papersToUpdate);
+              // Then delete the researcher
+              const deleteResearcher = this.httpCliente.delete(this.SERVER_URL + this.researcher._id).pipe(last());
+              return concat(updatePapers, deleteResearcher);
+            }),
+            toArray()
+          )
           .subscribe(res => {
             this.snackBar.open('Successfully deleted!', 'x', {
               duration: 2000,
