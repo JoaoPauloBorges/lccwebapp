@@ -5,9 +5,11 @@ import { environment } from '../../../../environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TopicPreview } from '../../../shared/models/topic-preview';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, concat, forkJoin } from 'rxjs';
+import { last, toArray } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialog } from '../../../shared/confirmation-dialog/confirmation-dialog';
+import { Paper } from '../../../shared/models/paper';
 
 @Component({
   selector: 'app-topic-form',
@@ -18,6 +20,8 @@ export class TopicFormComponent implements OnInit, OnDestroy {
 
   topicForm: FormGroup;
   SERVER_URL = 'api/topics/';
+  PAPERS_URL = 'api/papers/';
+  TOPIC_PAPERS_URL = this.PAPERS_URL + 'topic/';
   topicPreview: TopicPreview;
   subs: Subscription[] = [];
   title = 'Registration';
@@ -91,26 +95,56 @@ export class TopicFormComponent implements OnInit, OnDestroy {
   }
   
   openDialog(): void {
-    const dialogRef = this.dialog.open(ConfirmationDialog, {
-      width: '300px',
-      data: { title: 'Are you sure you want to delete this topic?', },
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.subs.push(this.httpCliente.delete(this.SERVER_URL + this.topicPreview._id)
-          .subscribe(res => {
-            this.snackBar.open('Successfully Deleted', 'x', {
-              duration: 2000,
-            });
-            window.location.pathname = '/admin/topic-list';
-          }, err => {
-            console.log(err),
-              this.snackBar.open('Something went wrong, reload and try again', 'x', {
-                duration: 2000,
-              });
-          }));
-      }
-    });
+    // Query for papers registered under the topic
+    this.subs.push(this.httpCliente.get<Paper[]>(this.TOPIC_PAPERS_URL + this.topicPreview._id)
+      .subscribe(papers => {
+        let content = '';
+        if (papers.length > 0) {
+          if (papers.length > 1) {
+            content = `There are ${papers.length} papers registered under this topic. All of them will be deleted if you choose to procceed.`;
+          } else {
+            content = 'There is 1 paper registered under this topic. It will be deleted if you choose to procceed.';
+          }
+        }
+        const dialogRef = this.dialog.open(ConfirmationDialog, {
+          width: '300px',
+          data: {
+            title: 'Are you sure you want to delete this topic?',
+            content,
+          },
+        });
+        dialogRef.afterClosed().subscribe(result => {
+          if (result) {
+            // First delete every paper registered under the topic
+            const papersToDelete = [];
+            for (const paper of papers) {
+              papersToDelete.push(this.httpCliente.delete(this.PAPERS_URL + paper._id));
+            }
+            const deletePapers = forkJoin(papersToDelete);
+            // Then delete the topic
+            const deleteTopic = this.httpCliente.delete(this.SERVER_URL + this.topicPreview._id).pipe(last());
+
+            this.subs.push(concat(deletePapers, deleteTopic)
+              .pipe(toArray())
+              .subscribe(res => {
+                this.snackBar.open('Successfully Deleted', 'x', {
+                  duration: 2000,
+                });
+                window.location.pathname = '/admin/topic-list';
+              }, err => {
+                console.log(err),
+                  this.snackBar.open('Something went wrong, reload and try again', 'x', {
+                    duration: 2000,
+                  });
+              }));
+          }
+        });
+      }, err => {
+        console.log(err),
+          this.snackBar.open('Something went wrong, reload and try again', 'x', {
+            duration: 2000,
+          });
+      }));
   }
 
   ngOnDestroy(): void {
