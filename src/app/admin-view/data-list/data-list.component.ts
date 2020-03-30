@@ -26,26 +26,27 @@ export class DataListComponent implements OnInit {
   ngOnInit() {
     this.dataSource.data = this.route.snapshot.data.dataSource;
     const url = this.route.snapshot.url.toString();
+    let displayedColumns: string[] = [];
+    switch (url) {
+      case 'paper-list':
+        displayedColumns = this.columnsPaper;
+        this.routeEdit = 'paper';
+        break;
+      case 'researcher-list':
+        displayedColumns = this.columnsResearcher;
+        this.routeEdit = 'researcher';
+        break;
+      case 'topic-list':
+        displayedColumns = this.columnsTopic;
+        this.routeEdit = 'topic';
+        break;
+      case 'post-list':
+        displayedColumns = this.columnsPost;
+        this.routeEdit = 'post';
+        break;
+    }
     if (this.dataSource.data.length > 0) {
-
-      switch (url) {
-        case 'paper-list':
-          this.displayedColumns = this.columnsPaper;
-          this.routeEdit = 'paper';
-          break;
-        case 'researcher-list':
-          this.displayedColumns = this.columnsResearcher;
-          this.routeEdit = 'researcher';
-          break;
-        case 'topic-list':
-          this.displayedColumns = this.columnsTopic;
-          this.routeEdit = 'topic';
-          break;
-        case 'post-list':
-          this.displayedColumns = this.columnsPost;
-          this.routeEdit = 'post';
-          break;
-      }
+      this.displayedColumns = displayedColumns;
     }
     this.dataSource.sort = this.sort;
   }
