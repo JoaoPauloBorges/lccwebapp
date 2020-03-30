@@ -1,6 +1,6 @@
 export interface TopicPreview {
     _id: string;
     name: string;
-    date: Date;
+    description: string;
     imagePath: string;
 }
