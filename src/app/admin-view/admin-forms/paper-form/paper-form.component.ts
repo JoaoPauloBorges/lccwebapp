@@ -42,7 +42,7 @@ export class PaperFormComponent implements OnInit, OnDestroy {
 
     this.paperForm = this.formBuilder.group({
       title: ['', Validators.required],
-      researchers: ['', Validators.required],
+      researchers: [''],
       paperDate: ['', Validators.required],
       topicId: ['', Validators.required],
       abstract: ['', Validators.required],
