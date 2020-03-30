@@ -4,7 +4,7 @@
     [ngStyle]="setStyle(i)">
       <mat-card-header>
         <mat-card-title>{{preview.name}}</mat-card-title>
-        <mat-card-subtitle>{{preview.date | dateInFull}}</mat-card-subtitle>
+        <mat-card-subtitle>{{preview.description}}</mat-card-subtitle>
       </mat-card-header>
       <a [routerLink]="['/papers', preview._id]">
         <div [ngStyle]="{'background-image':'url('+url+preview.imagePath+')'}"></div>
