@@ -15,6 +15,15 @@ table {
   width: 100%;
 }
 
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.actions >:not(.last-child) {
+  margin-right: 10px;
+}
+
 .mat-form-field {
   font-size: 14px;
   width: 100%;
