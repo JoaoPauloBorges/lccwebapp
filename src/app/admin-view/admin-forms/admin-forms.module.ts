@@ -8,6 +8,8 @@ import { SharedModule } from '../../shared/shared.module';
 import { TopicFormComponent } from './topic-form/topic-form.component';
 import { CarrouselFormComponent } from './carrousel-form/carrousel-form.component';
 import { PostFormComponent } from './post-form/post-form.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmationDialog } from '../../shared/confirmation-dialog/confirmation-dialog';
 
 
 @NgModule({
@@ -16,14 +18,19 @@ import { PostFormComponent } from './post-form/post-form.component';
     PaperFormComponent,
     TopicFormComponent,
     CarrouselFormComponent,
-    PostFormComponent,
+    PostFormComponent,    
+    ConfirmationDialog,
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,    
+    MatDialogModule,
+  ],
+  entryComponents: [
+    ConfirmationDialog,
   ],
   exports: [
     ResearcherFormComponent,
