@@ -13,12 +13,14 @@
       </mat-error>
     </mat-form-field>
 
-    <!-- date -->
+    <!-- description -->
     <mat-form-field>
-      <mat-label>Date</mat-label>
-      <input #inp matInput readonly formControlName="date" [matDatepicker]="picker" placeholder="Choose a date">
-      <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+      <mat-label>Topic description</mat-label>
+      <input #description matInput formControlName="description" maxlength="100">
+      <mat-hint align="end">{{description.value.length}} / 100 </mat-hint>
+      <mat-error *ngIf="topicForm.get('description').errors?.required">
+        Topic description is required!
+      </mat-error>
     </mat-form-field>
 
     <!-- imgPath -->
