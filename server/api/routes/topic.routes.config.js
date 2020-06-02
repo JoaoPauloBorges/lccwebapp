@@ -5,7 +5,7 @@ const Topic = require('../../models/topic.model');
 // routing for @/topics
 
 //@POST /topics
-//describe create a register of topic 
+//describe create a register of topic
 router.post('/', (req, resp) => {
     const topic = new Topic(req.body);
     topic.save().then((result) =>
@@ -16,7 +16,7 @@ router.post('/', (req, resp) => {
 });
 
 //@GET /topics
-//describe returns all topics registereds 
+//describe returns all topics registereds
 router.get('/', (req, resp) => {
     Topic.find()
         .then((result) => {
@@ -52,7 +52,7 @@ router.patch('/:topicId', (req, resp) => {
 });
 
 router.delete('/:topicId', (req, resp) => {
-    Topic.findByIdAndRemove(req.params.topicId)
+    Topic.findByIdAndDelete(req.params.topicId)
     .then(result => resp.status(200).send(result));
 });
 

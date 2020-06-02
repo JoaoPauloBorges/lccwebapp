@@ -5,7 +5,7 @@ const Carrousel = require('../../models/carrousel.model');
 // routing for @/carrousel
 
 //@POST /carrousel
-//describe create a register of carrousel 
+//describe create a register of carrousel
 router.post('/', (req, resp) => {
     const carrousel = new Carrousel(req.body);
     carrousel.save().then((result) =>
@@ -16,7 +16,7 @@ router.post('/', (req, resp) => {
 });
 
 //@GET /carrousel
-//describe returns all carrousel registereds 
+//describe returns all carrousel registereds
 router.get('/', (req, resp) => {
     Carrousel.find({})
         .then((result) => {
@@ -26,7 +26,7 @@ router.get('/', (req, resp) => {
 });
 
 //@GET /carrousel
-//describe returns all carrousel registereds 
+//describe returns all carrousel registereds
 router.get('/:page', (req, resp) => {
     const page = req.params.page;
     Carrousel.findOne({page})
@@ -37,7 +37,7 @@ router.get('/:page', (req, resp) => {
 });
 
 router.delete('/:carrouselId', (req, resp) => {
-    Carrousel.findByIdAndRemove(req.params.carrouselId)
+    Carrousel.findByIdAndDelete(req.params.carrouselId)
     .then(result => resp.status(200).send(result));
 });
 

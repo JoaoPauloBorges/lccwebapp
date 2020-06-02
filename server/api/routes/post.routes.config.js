@@ -5,7 +5,7 @@ const Post = require('../../models/post.model');
 // routing for @/posts
 
 //@POST /posts
-//describe create a register of post 
+//describe create a register of post
 router.post('/', (req, resp) => {
     const post = new Post(req.body);
     post.save().then((result) =>
@@ -16,7 +16,7 @@ router.post('/', (req, resp) => {
 });
 
 //@GET /posts
-//describe returns all posts registereds 
+//describe returns all posts registereds
 router.get('/', (req, resp) => {
     Post.find()
         .then((result) => {
@@ -52,7 +52,7 @@ router.patch('/:postId', (req, resp) => {
 });
 
 router.delete('/:postId', (req, resp) => {
-    Post.findByIdAndRemove(req.params.postId)
+    Post.findByIdAndDelete(req.params.postId)
     .then(result => resp.status(200).send(result));
 });
 

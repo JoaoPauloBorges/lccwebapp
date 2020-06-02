@@ -48,7 +48,7 @@ router.patch('/:researcherId', (req, resp) => {
 });
 
 router.delete('/:researcherId', (req, resp) => {
-    Researcher.findByIdAndRemove(req.params.researcherId)
+    Researcher.findByIdAndDelete(req.params.researcherId)
     .then(result => resp.status(200).send(result));
 });
 
