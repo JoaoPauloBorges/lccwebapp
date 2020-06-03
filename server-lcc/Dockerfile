@@ -3,4 +3,3 @@ WORKDIR /code
 COPY package.json /code
 RUN npm install --silent
 COPY . .
-RUN node server.js

@@ -3,8 +3,9 @@ WORKDIR /app
 COPY package.json /app
 RUN npm install --silent
 COPY . .
-RUN npm run build --prod
+RUN npm run build
 
 FROM nginx:alpine AS webserver
 VOLUME /var/cache/nginx
 COPY --from=angular-lcc app/dist/angular-lcc/ usr/share/nginx/html
+COPY ./nginx-conf/nginx.conf /etc/nginx/conf.d/default.conf

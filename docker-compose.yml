@@ -1,31 +1,26 @@
 version: '3'
 
 services:
-  server-lcc:
-    build: ./server-lcc
-    image: server-lcc
-    container_name: server-lcc
-    restart: unless-stopped
+  webserver:
+    build: ./angular-lcc
+    container_name: webserver
     ports:
-      - "3000:3000"
+      - "80:80"
+    volumes:
+      - web-root:/usr/share/nginx/html
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
     networks:
       - app-network
 
-
-  webserver:
-    image: angular-lcc
-    build: ./angular-lcc
-    container_name: webserver
-    restart: unless-stopped
-    ports:
-      - "4200:80"
+  server-lcc:
+    build: ./server-lcc
+    container_name: server-lcc
+    command: node server.js
     volumes:
-      - web-root:/usr/share/nginx/html
-      - ./nginx-conf:/etc/nginx/conf.d
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
-    depends_on:
-      - server-lcc
+      - ./server-lcc:/code
+    ports:
+      - "3000:3000"
     networks:
       - app-network
 
